@@ -28,7 +28,7 @@
             retention-days: 7
         - name: Build and publish updated image
           run: |
-            docker login --username DaFessor --password ${{ secrets.CIDEMO_PAT }}
+            docker login --username DaFessor --password ${{ secrets.PACKPUB_SECRET }}
             docker build --tag ghcr.io/dafessor/devopscidemo:latest
             docker push ghcr.io/dafessor/devopscidemo:latest
 
