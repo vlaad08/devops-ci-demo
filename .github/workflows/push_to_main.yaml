@@ -18,13 +18,21 @@
             distribution: 'temurin'
             cache: maven
         - name: Run all tests in project
-          run:  sh -c "cd /workspaces;mvn compile && mvn test"
+          run: |
+            cd /workspaces
+            mvn compile && mvn test
         - name: Archive code coverage results
           uses: actions/upload-artifact@v3
           with:
             name: test-coverage-report
             path: target/site/jacoco/
             retention-days: 7
+        - name: Build and publish updated image
+          run: |
+            cd /workspaces
+            docker login --username DaFessor --password ${{ secrets.CIDEMO_PAT }}
+            docker build --tag ghcr.io/dafessor/devopscidemo:latest
+            docker push ghcr.io/dafessor/devopscidemo:latest
 
     update_coverage_report:
       needs: run_tests
