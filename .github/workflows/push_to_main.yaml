@@ -6,7 +6,7 @@
   jobs:
 
     run_tests:
-      runs-on: eclipse-temurin:17-jre
+      runs-on: ubuntu-latest
 
       steps:
         - name: Checkout repo
