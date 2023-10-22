@@ -23,7 +23,7 @@
             cache: maven
         - name: Run all tests in project
           run: |
-            mvn compile && mvn test && mvn package
+            mvn compile && mvn test
         - name: Archive code coverage results
           uses: actions/upload-artifact@v3
           with:
@@ -38,6 +38,7 @@
             password: ${{ secrets.PACKPUB_SECRET }}
         - name: Build and publish updated image
           run: |
+            mvn package
             docker build . --tag ghcr.io/dafessor/devopscidemo:latest
             docker push ghcr.io/dafessor/devopscidemo:latest
 
