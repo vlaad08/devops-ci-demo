@@ -38,7 +38,7 @@
             password: ${{ secrets.PACKPUB_SECRET }}
         - name: Build and publish updated image
           run: |
-            docker build --tag ghcr.io/dafessor/devopscidemo:latest
+            docker build . --tag ghcr.io/dafessor/devopscidemo:latest
             docker push ghcr.io/dafessor/devopscidemo:latest
 
     update_coverage_report:
