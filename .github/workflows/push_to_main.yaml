@@ -1,0 +1,27 @@
+  on:
+    push:
+    workflow_dispatch:
+      branches:
+        - main
+  jobs:
+
+    run_tests:
+      runs-on: eclipse-temurin:17-jre
+
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v3
+        - name: Cache Maven packages
+          uses: actions/cache@v3
+          with:
+            path: ~/.m2
+            key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+            restore-keys: ${{ runner.os }}-m2
+        - name: Run all tests in project
+          run:  sh -c "cd /workspaces;mvn compile && mvn test"
+        - name: Archive code coverage results
+          uses: actions/upload-artifact@v3
+          with:
+            name: test-coverage-report
+            path: target/site/jacoco/
+            retention-days: 7
