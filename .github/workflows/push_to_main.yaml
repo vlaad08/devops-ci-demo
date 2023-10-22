@@ -19,7 +19,6 @@
             cache: maven
         - name: Run all tests in project
           run: |
-            cd /workspaces
             mvn compile && mvn test
         - name: Archive code coverage results
           uses: actions/upload-artifact@v3
@@ -29,7 +28,6 @@
             retention-days: 7
         - name: Build and publish updated image
           run: |
-            cd /workspaces
             docker login --username DaFessor --password ${{ secrets.CIDEMO_PAT }}
             docker build --tag ghcr.io/dafessor/devopscidemo:latest
             docker push ghcr.io/dafessor/devopscidemo:latest
