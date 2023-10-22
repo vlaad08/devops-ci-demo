@@ -23,7 +23,7 @@
             cache: maven
         - name: Run all tests in project
           run: |
-            mvn compile && mvn test
+            mvn compile && mvn test && mvn package
         - name: Archive code coverage results
           uses: actions/upload-artifact@v3
           with:
@@ -40,6 +40,7 @@
           run: |
             pwd
             ls -al
+            ls -al target
             docker build . --tag ghcr.io/dafessor/devopscidemo:latest
             docker push ghcr.io/dafessor/devopscidemo:latest
 
