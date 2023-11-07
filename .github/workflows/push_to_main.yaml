@@ -1,3 +1,6 @@
+# A workflow runs all tests and creates/updates Docker image
+name: Run tests and update image
+
   on:
     push:
     workflow_dispatch:
