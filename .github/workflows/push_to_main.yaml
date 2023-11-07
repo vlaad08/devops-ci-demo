@@ -42,6 +42,7 @@ jobs:
         run: |
           mvn package
           reponame_lowercase=${GITHUB_REPOSITORY,,}
+          echo "Image tag will be ghcr.io/${reponame_lowercase}:latest"
           docker build . --tag ghcr.io/${reponame_lowercase}:latest
           docker push ghcr.io/${reponame_lowercase}:latest
     
