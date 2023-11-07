@@ -3,7 +3,5 @@ Demonstration project for simple CI. This project demonstrates:
 * Forced use of pull request
 * Simple Github actions for testing code
 * Creation of artifact (report with test results)
-* Publishing stuff/status to Github Pages for the project
+* Publishing stuff/status to [Github Pages for the project](https://dafessor.github.io/devops-ci-demo/)
 * Invoking an action from another action
-
-
