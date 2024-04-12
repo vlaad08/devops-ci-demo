@@ -1,0 +1,15 @@
+name: CI Pipeline (DOC1)
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [main]
+
+jobs:
+    build:
+        name: My first Pipeline
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Run a one-liner script
+              run: echo "Continous Integration"
